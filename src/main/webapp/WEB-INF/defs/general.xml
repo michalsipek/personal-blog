@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+	<definition name="common" template="/WEB-INF/layouts/classic.jsp">
+		<put-attribute name="menu" value="/WEB-INF/layouts/menu.jsp" />
+		<put-attribute name="header" value="/WEB-INF/layouts/header.jsp" />
+		<put-attribute name="sidebar" value="/WEB-INF/layouts/sidebar.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/layouts/footer.jsp" />
+	</definition>
+	<definition name="detail" template="/WEB-INF/layouts/article-detail.jsp">
+		<put-attribute name="menu" value="/WEB-INF/layouts/menu.jsp" />
+		<put-attribute name="header" value="/WEB-INF/layouts/header.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/layouts/footer.jsp" />
+	</definition>
+	<definition name="admin" template="/WEB-INF/layouts/admin.jsp">
+		<put-attribute name="admin-nav" value="/WEB-INF/layouts/admin-nav.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/layouts/footer.jsp" />
+	</definition>
+	
+	<definition name="index" extends="common">
+		<put-attribute name="body" value="/WEB-INF/jsp/index.jsp" />
+		<put-attribute name="title" value="Osobní blog Michala Šípka" />
+	</definition>
+	<definition name="index-filterByCat" extends="common">
+		<put-attribute name="body" value="/WEB-INF/jsp/index-filterByCat.jsp" />
+		<put-attribute name="title" value="Osobní blog Michala Šípka" />
+	</definition>
+	<definition name="categories" extends="admin">
+		<put-attribute name="body" value="/WEB-INF/jsp/categories.jsp" />
+		<put-attribute name="title" value="Kategorie" />
+		<put-attribute name="current" value="categories" />
+	</definition>
+	<definition name="users" extends="admin">
+		<put-attribute name="title" value="Uživatelé" />
+		<put-attribute name="body" value="/WEB-INF/jsp/users.jsp" />
+		<put-attribute name="current" value="users" />
+	</definition>
+	<definition name="user-detail" extends="admin">
+		<put-attribute name="title" value="Detail uživatele" />
+		<put-attribute name="body" value="/WEB-INF/jsp/user-detail.jsp" />
+		<put-attribute name="current" value="users" />
+	</definition>
+	<definition name="article-detail" extends="admin">
+		<put-attribute name="title" value="Detail článku" />
+		<put-attribute name="body" value="/WEB-INF/jsp/article-detail.jsp" />
+		<put-attribute name="current" value="articles" />
+	</definition>
+	<definition name="article-detail-public" extends="detail">
+		<put-attribute name="title" value="Detail článku" />
+		<put-attribute name="body" value="/WEB-INF/jsp/article-detail-public.jsp" />
+	</definition>
+	<definition name="category-detail" extends="admin">
+		<put-attribute name="title" value="Detail rubriky" />
+		<put-attribute name="body" value="/WEB-INF/jsp/category-detail.jsp" />
+		<put-attribute name="current" value="categories" />
+	</definition>
+	<definition name="articles" extends="admin">
+		<put-attribute name="title" value="Články" />
+		<put-attribute name="body" value="/WEB-INF/jsp/articles.jsp" />
+		<put-attribute name="current" value="articles" />
+	</definition>
+	<definition name="article-add" extends="admin">
+		<put-attribute name="title" value="Vytvořit nový článek" />
+		<put-attribute name="body" value="/WEB-INF/jsp/article-add.jsp" />
+		<put-attribute name="current" value="articles" />
+	</definition>
+	<definition name="edit-user" extends="admin">
+		<put-attribute name="title" value="Upravit uživatele" />
+		<put-attribute name="body" value="/WEB-INF/jsp/edit-user.jsp" />
+		<put-attribute name="current" value="users" />
+	</definition>
+	<definition name="edit-category" extends="admin">
+		<put-attribute name="title" value="Upravit kategorii" />
+		<put-attribute name="body" value="/WEB-INF/jsp/edit-category.jsp" />
+		<put-attribute name="current" value="categories" />
+	</definition>
+	<definition name="dashboard" extends="admin">
+		<put-attribute name="title" value="Přehled" />
+		<put-attribute name="body" value="/WEB-INF/jsp/dashboard.jsp" />
+		<put-attribute name="current" value="dashboard" />
+	</definition>
+	<definition name="settings" extends="admin">
+		<put-attribute name="title" value="Nastavení" />
+		<put-attribute name="body" value="/WEB-INF/jsp/settings.jsp" />
+		<put-attribute name="current" value="settings" />
+	</definition>
+</tiles-definitions>
