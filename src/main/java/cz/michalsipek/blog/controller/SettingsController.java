@@ -57,7 +57,7 @@ public class SettingsController {
 		if (result.hasErrors()) {
 			return settings(model);
 		}
-		archive.setLocation("/archive?date=" + location);
+		archive.setLocation("/archive?date=" + location + "&page=0");
 		archiveService.save(archive);
 		return "redirect:/admin/settings.html?success=true";
 	}

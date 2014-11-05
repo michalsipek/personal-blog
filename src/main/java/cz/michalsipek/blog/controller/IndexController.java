@@ -37,7 +37,7 @@ public class IndexController {
 	@Autowired
 	ArchiveService archiveService;
 	
-	private static final int limitResultsPerPage = 5;
+	private static final int limitResultsPerPage = 4;
 
 	/**
 	 * Method redirects to index page
@@ -83,14 +83,18 @@ public class IndexController {
 	}
 	
 	/**
-	 * Method for display articles by date
+	 * Method for display articles by date with pagination
 	 * */
 	@RequestMapping(value = "/archive", method = RequestMethod.GET)
-	public String getArticlesByYear(@RequestParam(value = "date") String date, Model model){
+	public String getArticlesByYear(@RequestParam(value = "date") String date, @RequestParam(value="page") int page, Model model){
 		model.addAttribute("categories", categoryService.findAll());
 		model.addAttribute("archives", archiveService.findAll());
-		model.addAttribute("articles", articleService.findByDate(date));
-		return "index";
+		model.addAttribute("articles", articleService.findByDate(date, page, limitResultsPerPage));
+		model.addAttribute("page",page);
+		model.addAttribute("date",date);
+		model.addAttribute("sizeArticles", articleService.findAll().size()); // tuto metodu nutno zmenit, v kazdem filtru je jiny pocet clanku
+		model.addAttribute("limitResultsPerPage", limitResultsPerPage);
+		return "archive";
 	}
 
 }

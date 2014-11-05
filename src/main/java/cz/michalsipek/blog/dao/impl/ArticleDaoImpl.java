@@ -9,6 +9,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
 import cz.michalsipek.blog.dao.ArticleDao;
 import cz.michalsipek.blog.entity.Article;
 
@@ -70,12 +71,15 @@ public class ArticleDaoImpl implements ArticleDao {
 		return article;
 	}
 
-	@Override
 	@SuppressWarnings("unchecked")
-	public List<Article> findByDate(String date) {
+	@Override
+	public List<Article> findByDate(String date, int page,
+			int limitResultsPerPage) {
 		Query query = sessionFactory.getCurrentSession().createQuery(
 				"from Article where publishDate like '" + date
 						+ "%' order by publishDate ASC");
+		query.setFirstResult(page * limitResultsPerPage);
+		query.setMaxResults(limitResultsPerPage);
 		List<Article> articles = query.list();
 		return articles;
 	}

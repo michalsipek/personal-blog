@@ -23,6 +23,10 @@
 		<put-attribute name="body" value="/WEB-INF/jsp/index.jsp" />
 		<put-attribute name="title" value="Osobní blog Michala Šípka" />
 	</definition>
+	<definition name="archive" extends="common">
+		<put-attribute name="body" value="/WEB-INF/jsp/archive.jsp" />
+		<put-attribute name="title" value="Osobní blog Michala Šípka" />
+	</definition>
 	<definition name="index-filterByCat" extends="common">
 		<put-attribute name="body" value="/WEB-INF/jsp/index-filterByCat.jsp" />
 		<put-attribute name="title" value="Osobní blog Michala Šípka" />

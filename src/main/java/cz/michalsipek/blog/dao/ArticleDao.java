@@ -12,5 +12,5 @@ import cz.michalsipek.blog.entity.Article;
 
 public interface ArticleDao extends GenericDao<Article, Integer> {
 	List<Article> findAllWithPagination(int page, int limitResultsPerPage);
-	List<Article> findByDate(String date);
+	List<Article> findByDate(String date, int page, int limitResultsPerPage);
 }

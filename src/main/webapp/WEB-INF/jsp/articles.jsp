@@ -3,8 +3,6 @@
 
 <%@ include file="../layouts/taglibs.jsp"%>
 
-
-
 <div class="col-sm-9 col-md-10">
 	<ol class="breadcrumb">
 		<li><a href='<spring:url value="/admin/articles/new.html"></spring:url>'>Nový příspěvek</a></li>

@@ -31,6 +31,10 @@ h1,.h1,h2,.h2,h3,.h3,h4,.h4,h5,.h5,h6,.h6 {
 	color: #333;
 }
 
+p{
+	font-size: 16px;
+}
+
 /*
  * Override Bootstrap's default container.
  */
@@ -93,7 +97,7 @@ h1,.h1,h2,.h2,h3,.h3,h4,.h4,h5,.h5,h6,.h6 {
 .blog-title {
 	margin-top: 30px;
 	margin-bottom: 0;
-	font-size: 60px;
+	font-size: 50px;
 	font-weight: normal;
 }
 
@@ -149,16 +153,16 @@ h1,.h1,h2,.h2,h3,.h3,h4,.h4,h5,.h5,h6,.h6 {
 
 .blog-post-title {
 	margin-bottom: 5px;
-	font-size: 30px;
+	font-size: 25px;
 	font-family: Georgia,serif;
 }
 
 .blog-post-meta {
-	margin-bottom: 20px;
+	margin-bottom: 15px;
 	color: #999;
 }
 .blog-post-perex {
-	font-size: 20px;
+	font-size: 15px;
 }
 
 /*

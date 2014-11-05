@@ -2,7 +2,11 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../layouts/taglibs.jsp"%>
 
-<div class="sidebar-module sidebar-module-inset"></div>
+<div class="sidebar-module sidebar-module-inset">
+	<div class="fb-like" data-href="http://sipekmichal.com"
+		data-layout="button_count" data-action="like" data-show-faces="true"
+		data-share="true"></div>
+</div>
 <div class="sidebar-module">
 	<h4>Kategorie</h4>
 	<ol class="list-unstyled">
@@ -12,6 +16,7 @@
 		</c:forEach>
 	</ol>
 </div>
+
 <div class="sidebar-module">
 	<h4>Archiv</h4>
 	<ol class="list-unstyled">
@@ -28,5 +33,6 @@
 		<li><a href="#">LinkedIn</a></li>
 		<li><a href="#">Facebook</a></li>
 	</ol>
+</div>
 </div>
 <!-- /.blog-sidebar -->

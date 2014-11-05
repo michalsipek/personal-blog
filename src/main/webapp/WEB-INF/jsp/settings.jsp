@@ -45,7 +45,6 @@
 						<form:errors path="title" />
 					</div>
 				</div>
-
 				<div class="form-group">
 					<label for="location" class="col-sm-4 control-label">/archive?date=</label>
 					<div class="col-sm-4">
@@ -61,7 +60,6 @@
 							class="btn btn-primary pull-right">
 					</div>
 				</div>
-
 			</form:form>
 		</div>
 	</div>

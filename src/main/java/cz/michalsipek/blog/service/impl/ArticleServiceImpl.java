@@ -54,8 +54,9 @@ public class ArticleServiceImpl implements ArticleService {
 	}
 
 	@Override
-	public List<Article> findByDate(String date) {
-		return articleDao.findByDate(date);
+	public List<Article> findByDate(String date, int page,
+			int limitResultsPerPage) {
+		return articleDao.findByDate(date, page, limitResultsPerPage);
 	}
 
 
