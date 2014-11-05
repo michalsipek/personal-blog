@@ -5,10 +5,12 @@
 <ul class="nav nav-tabs" role="tablist">
 	<li class="active"><a href="#profile" role="tab" data-toggle="tab">Můj
 			profil</a></li>
-	<li><a href="#roles" role="tab" data-toggle="tab">Uživatelské
-			role</a></li>
-	<li><a href="#archives" role="tab" data-toggle="tab">Položky
-			archivu</a></li>
+	<security:authorize access="hasRole('ROLE_ADMIN')">
+		<li><a href="#roles" role="tab" data-toggle="tab">Uživatelské
+				role</a></li>
+		<li><a href="#archives" role="tab" data-toggle="tab">Položky
+				archivu</a></li>
+	</security:authorize>
 </ul>
 
 <div class="tab-content">
@@ -21,38 +23,47 @@
 		</c:forEach>
 	</div>
 	<div class="tab-pane" id="archives">
-		<c:forEach items="${archives}" var="archive">
-			<p>
-				<c:out value="${archive.title}" /> <a href="<spring:url value="/admin/settings/removeArchive/${archive.id}"></spring:url>"> X</a>
-				
-			</p>
-		</c:forEach>
-		<form:form commandName="archive"
-			cssClass="form-horizontal registrationForm">
-			<div class="form-group">
-				<label for="title" class="col-sm-2 control-label">Titulek</label>
-				<div class="col-sm-4">
-					<form:input path="title" cssClass="form-control" />
-					<form:errors path="title" />
+		<div class="col-sm-2">
+			<br>
+			<c:forEach items="${archives}" var="archive">
+				<p>
+					<c:out value="${archive.title}" />
+					<a
+						href="<spring:url value="/admin/settings/removeArchive/${archive.id}"></spring:url>">
+						X</a>
+				</p>
+			</c:forEach>
+		</div>
+		<div class="col-sm-10">
+			<br>
+			<form:form commandName="archive"
+				cssClass="form-horizontal registrationForm">
+				<div class="form-group">
+					<label for="title" class="col-sm-4 control-label">Titulek</label>
+					<div class="col-sm-4">
+						<form:input path="title" cssClass="form-control" />
+						<form:errors path="title" />
+					</div>
 				</div>
-			</div>
 
-			<div class="form-group">
-				<label for="location" class="col-sm-2 control-label">/archive?date=</label>
-				<div class="col-sm-4">
-					<form:input path="location" type="text" class="form-control"
-						placeholder="yyyy-MM" />
-					<form:errors path="location" />
+				<div class="form-group">
+					<label for="location" class="col-sm-4 control-label">/archive?date=</label>
+					<div class="col-sm-4">
+						<form:input path="location" type="text" class="form-control"
+							placeholder="yyyy-MM" />
+						<form:errors path="location" />
+					</div>
 				</div>
-			</div>
 
-			<div class="form-group">
-				<div class="col-sm-6">
-					<input type="submit" value="Uložit" class="btn btn-primary pull-right">
+				<div class="form-group">
+					<div class="col-sm-8">
+						<input type="submit" value="Uložit"
+							class="btn btn-primary pull-right">
+					</div>
 				</div>
-			</div>
 
-		</form:form>
+			</form:form>
+		</div>
 	</div>
 </div>
 

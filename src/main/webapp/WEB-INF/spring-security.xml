@@ -7,7 +7,7 @@
            http://www.springframework.org/schema/security/spring-security.xsd">
 
 	<http use-expressions="true">
-		<intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/admin/**" access="hasAnyRole('ROLE_ADMIN','ROLE_USER')" />
 		<form-login login-page="/login.html" default-target-url="/admin/dashboard.html"/>
 		<logout logout-url="/logout" />
 	</http>
