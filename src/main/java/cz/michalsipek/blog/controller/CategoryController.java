@@ -54,7 +54,7 @@ public class CategoryController {
 	}
 	
 	/**
-	 * Method for save category
+	 * Method for saving category
 	 * */
 	@RequestMapping(value="admin/categories", method = RequestMethod.POST)
 	public String saveCategory(Model model, @ModelAttribute("category") Category category, BindingResult result){
@@ -84,7 +84,7 @@ public class CategoryController {
 	}
 	
 	/**
-	 * Method for save the modified category
+	 * Method for saving the modified category
 	 * */
 	@RequestMapping(value="admin/categories/edit/{id}", method = RequestMethod.POST)
 	public String doEditCategory(@Valid @ModelAttribute("edit-category") Category category, BindingResult result){

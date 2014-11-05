@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import cz.michalsipek.blog.service.ArchiveService;
 import cz.michalsipek.blog.service.ArticleService;
 import cz.michalsipek.blog.service.CategoryService;
 import cz.michalsipek.blog.service.UserService;
@@ -33,6 +34,9 @@ public class IndexController {
 	@Autowired
 	ArticleService articleService;
 	
+	@Autowired
+	ArchiveService archiveService;
+	
 	private static final int limitResultsPerPage = 5;
 
 	/**
@@ -49,6 +53,7 @@ public class IndexController {
 	@RequestMapping(value = "/articles", method = RequestMethod.GET)
 	public String getArticles(@RequestParam(value = "page", required = false) int page, Model model){
 		model.addAttribute("categories", categoryService.findAll());
+		model.addAttribute("archives", archiveService.findAll());
 		model.addAttribute("articles", articleService.findAllWithPagination(page, limitResultsPerPage));
 		model.addAttribute("page",page);
 		model.addAttribute("sizeArticles", articleService.findAll().size());
@@ -70,10 +75,22 @@ public class IndexController {
 	 * Method for display articles by category
 	 * */
 	@RequestMapping("/articles/cat{id}")
-	public String getArticleByCategory(Model model, @PathVariable Integer id){
+	public String getArticlesByCategory(Model model, @PathVariable Integer id){
 		model.addAttribute("categories", categoryService.findAll());
+		model.addAttribute("archives", archiveService.findAll());
 		model.addAttribute("category", categoryService.findById(id));		
 		return "index-filterByCat";
+	}
+	
+	/**
+	 * Method for display articles by date
+	 * */
+	@RequestMapping(value = "/archive", method = RequestMethod.GET)
+	public String getArticlesByYear(@RequestParam(value = "date") String date, Model model){
+		model.addAttribute("categories", categoryService.findAll());
+		model.addAttribute("archives", archiveService.findAll());
+		model.addAttribute("articles", articleService.findByDate(date));
+		return "index";
 	}
 
 }

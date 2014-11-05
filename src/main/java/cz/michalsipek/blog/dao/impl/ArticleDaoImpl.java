@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Order;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,20 +42,20 @@ public class ArticleDaoImpl implements ArticleDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Article> findAll() {
-		return this.sessionFactory.getCurrentSession()
+		return sessionFactory.getCurrentSession()
 				.createCriteria(Article.class)
 				.addOrder(Order.desc("publishDate")).list();
 	}
 
 	@Override
 	public Article save(Article article) {
-		this.sessionFactory.getCurrentSession().save(article);
+		sessionFactory.getCurrentSession().save(article);
 		return article;
 	}
 
 	@Override
 	public void remove(Article article) {
-		this.sessionFactory.getCurrentSession().delete(article);
+		sessionFactory.getCurrentSession().delete(article);
 	}
 
 	@Override
@@ -65,7 +66,17 @@ public class ArticleDaoImpl implements ArticleDao {
 
 	@Override
 	public Article update(Article article) {
-		this.sessionFactory.getCurrentSession().update(article);
+		sessionFactory.getCurrentSession().update(article);
 		return article;
+	}
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<Article> findByDate(String date) {
+		Query query = sessionFactory.getCurrentSession().createQuery(
+				"from Article where publishDate like '" + date
+						+ "%' order by publishDate ASC");
+		List<Article> articles = query.list();
+		return articles;
 	}
 }

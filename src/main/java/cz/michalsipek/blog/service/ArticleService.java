@@ -13,4 +13,5 @@ import cz.michalsipek.blog.entity.Article;
 
 public interface ArticleService extends ArticleDao {
 	List<Article> findAllWithPagination(int page, int limitResultsPerPage);
+	List<Article> findByDate(String date);
 }

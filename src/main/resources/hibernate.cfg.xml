@@ -9,5 +9,6 @@
 		<mapping class="cz.michalsipek.blog.entity.Category"></mapping>
 		<mapping class="cz.michalsipek.blog.entity.Role"></mapping>
 		<mapping class="cz.michalsipek.blog.entity.Article"></mapping>
+		<mapping class="cz.michalsipek.blog.entity.Archive"></mapping>
 	</session-factory>
 </hibernate-configuration>

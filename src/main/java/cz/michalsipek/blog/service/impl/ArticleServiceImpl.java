@@ -53,5 +53,10 @@ public class ArticleServiceImpl implements ArticleService {
 		return articleDao.findAllWithPagination(page, limitResultsPerPage);
 	}
 
+	@Override
+	public List<Article> findByDate(String date) {
+		return articleDao.findByDate(date);
+	}
+
 
 }

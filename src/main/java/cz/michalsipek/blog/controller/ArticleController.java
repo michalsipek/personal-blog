@@ -85,7 +85,7 @@ public class ArticleController {
 	}
 
 	/**
-	 * Method for save article
+	 * Method for saving an article
 	 * */
 	@RequestMapping(value = "/admin/articles/new", method = RequestMethod.POST)
 	public String saveArticle(Model model,@Valid @ModelAttribute("article") Article article,

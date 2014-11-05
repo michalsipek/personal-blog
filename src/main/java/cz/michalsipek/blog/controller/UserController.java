@@ -68,7 +68,7 @@ public class UserController {
 	}
 
 	/**
-	 * Method for save user
+	 * Method for saving user
 	 * */
 	@RequestMapping(value = "admin/users", method = RequestMethod.POST)
 	public String saveUser(Model model,@Valid @ModelAttribute("user") User user, BindingResult result) {
@@ -99,7 +99,7 @@ public class UserController {
 	}
 
 	/**
-	 * Method for save the modified user
+	 * Method for saving the modified user
 	 * */
 	@RequestMapping(value = "admin/users/edit/{id}", method = RequestMethod.POST)
 	public String doEditUser(Model model, @Valid @ModelAttribute("edit-user") User user, BindingResult result) {
