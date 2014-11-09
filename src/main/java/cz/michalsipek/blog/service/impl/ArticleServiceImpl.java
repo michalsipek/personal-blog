@@ -59,5 +59,10 @@ public class ArticleServiceImpl implements ArticleService {
 		return articleDao.findByDate(date, page, limitResultsPerPage);
 	}
 
+	@Override
+	public void disable(Article article) {
+		articleDao.disable(article);
+	}
+
 
 }

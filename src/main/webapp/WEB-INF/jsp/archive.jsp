@@ -9,6 +9,7 @@
 			<span class="glyphicon glyphicon-calendar" ></span> <fmt:formatDate value="${article.publishDate}" pattern="dd.MM.yyyy HH:mm"/>
 			<span class="glyphicon glyphicon-user"></span> ${article.user.name}</p>   
 		<p>${article.perex}</p>
+		<a href='<spring:url value="/articles/${article.id}.html"></spring:url>' style="font-size: 14px">Zobrazit celý článek</a>
 		<hr>
 	</c:forEach>
 </div>

@@ -15,7 +15,7 @@ import cz.michalsipek.blog.dao.GenericDao;
 
 public class GenericDaoHibernateImpl<T, PK> implements GenericDao<T, PK> {
 
-	private SessionFactory sessionFactory;
+	protected SessionFactory sessionFactory;
 	private Class<T> type;
 
 	public GenericDaoHibernateImpl(Class<T> type) {

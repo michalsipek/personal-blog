@@ -9,206 +9,432 @@
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title><tiles:getAsString name="title"></tiles:getAsString></title>
 
 <style type="text/css">
-
-/*
- * Globals
+/*!
+ * Clean Blog v1.0.0 (http://startbootstrap.com)
+ * Copyright 2014 Start Bootstrap
+ * Licensed under Apache 2.0 (https://github.com/IronSummitMedia/startbootstrap/blob/gh-pages/LICENSE)
  */
 body {
-	font-family: Georgia, "Times New Roman", Times, serif;
-	color: #555;
+	font-family: Lora, 'Times New Roman', serif;
+	font-size: 20px;
+	color: #404040
 }
 
-h1,.h1,h2,.h2,h3,.h3,h4,.h4,h5,.h5,h6,.h6 {
-	margin-top: 0;
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-	font-weight: normal;
-	color: #333;
+p {
+	line-height: 1.5;
+	margin: 30px 0
 }
 
-p{
+p a {
+	text-decoration: underline
+}
+
+h1,h2,h3,h4,h5,h6 {
+	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-weight: 800;
+}
+
+h3 {
 	font-size: 16px;
+	font-weight: 400;
 }
 
-/*
- * Override Bootstrap's default container.
- */
-@media ( min-width : 1200px) {
-	.container {
-		width: 970px;
+a {
+	color: #404040
+}
+
+a:hover,a:focus {
+	color: #0085a1
+}
+
+a img:hover,a img:focus {
+	cursor: zoom-in
+}
+
+blockquote {
+	color: gray;
+	font-style: italic
+}
+
+hr.small {
+	max-width: 100px;
+	margin: 15px auto;
+	border-width: 4px;
+	border-color: #fff
+}
+
+.navbar-custom {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 3;
+	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif
+}
+
+.navbar-custom .navbar-brand {
+	font-weight: 800
+}
+
+.navbar-custom .nav li a {
+	text-transform: uppercase;
+	font-size: 12px;
+	font-weight: 800;
+	letter-spacing: 1px
+}
+
+@media only screen and (min-width:768px) {
+	.navbar-custom {
+		background: 0 0;
+		border-bottom: 1px solid transparent
+	}
+	.navbar-custom .navbar-brand {
+		color: #fff;
+		padding: 20px
+	}
+	.navbar-custom .navbar-brand:hover,.navbar-custom .navbar-brand:focus {
+		color: rgba(255, 255, 255, .8)
+	}
+	.navbar-custom .nav li a {
+		color: #fff;
+		padding: 20px
+	}
+	.navbar-custom .nav li a:hover,.navbar-custom .nav li a:focus {
+		color: rgba(255, 255, 255, .8)
 	}
 }
 
-/*
- * Masthead for nav
- */
-.blog-masthead {
-	background-color: #428bca;
-	-webkit-box-shadow: inset 0 -2px 5px rgba(0, 0, 0, .1);
-	box-shadow: inset 0 -2px 5px rgba(0, 0, 0, .1);
+@media only screen and (min-width:1170px) {
+	.navbar-custom {
+		-webkit-transition: background-color .3s;
+		-moz-transition: background-color .3s;
+		transition: background-color .3s;
+		-webkit-transform: translate3d(0, 0, 0);
+		-moz-transform: translate3d(0, 0, 0);
+		-ms-transform: translate3d(0, 0, 0);
+		-o-transform: translate3d(0, 0, 0);
+		transform: translate3d(0, 0, 0);
+		-webkit-backface-visibility: hidden;
+		backface-visibility: hidden
+	}
+	.navbar-custom.is-fixed {
+		position: fixed;
+		top: -61px;
+		background-color: rgba(255, 255, 255, .9);
+		border-bottom: 1px solid #f2f2f2;
+		-webkit-transition: -webkit-transform .3s;
+		-moz-transition: -moz-transform .3s;
+		transition: transform .3s
+	}
+	.navbar-custom.is-fixed .navbar-brand {
+		color: #404040
+	}
+	.navbar-custom.is-fixed .navbar-brand:hover,.navbar-custom.is-fixed .navbar-brand:focus
+		{
+		color: #0085a1
+	}
+	.navbar-custom.is-fixed .nav li a {
+		color: #404040
+	}
+	.navbar-custom.is-fixed .nav li a:hover,.navbar-custom.is-fixed .nav li a:focus
+		{
+		color: #0085a1
+	}
+	.navbar-custom.is-visible {
+		-webkit-transform: translate3d(0, 100%, 0);
+		-moz-transform: translate3d(0, 100%, 0);
+		-ms-transform: translate3d(0, 100%, 0);
+		-o-transform: translate3d(0, 100%, 0);
+		transform: translate3d(0, 100%, 0)
+	}
 }
 
-/* Nav links */
-.blog-nav-item {
-	position: relative;
-	display: inline-block;
-	padding: 10px;
-	font-weight: 500;
-	color: #cdddeb;
+.intro-header {
+	background-color: gray;
+	background: no-repeat center center;
+	background-attachment: scroll;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	background-size: cover;
+	-o-background-size: cover;
+	margin-bottom: 50px
 }
 
-.blog-nav-item:hover,.blog-nav-item:focus {
-	color: #fff;
-	text-decoration: none;
-}
-
-/* Active state gets a caret at the bottom */
-.blog-nav .active {
-	color: #fff;
-}
-
-.blog-nav .active:after {
-	position: absolute;
-	bottom: 0;
-	left: 50%;
-	width: 0;
-	height: 0;
-	margin-left: -5px;
-	vertical-align: middle;
-	content: " ";
-	border-right: 5px solid transparent;
-	border-bottom: 5px solid;
-	border-left: 5px solid transparent;
-}
-
-/*
- * Blog name and description
- */
-.blog-header {
-	padding-top: 20px;
-	padding-bottom: 20px;
-}
-
-.blog-title {
-	margin-top: 30px;
-	margin-bottom: 0;
-	font-size: 50px;
-	font-weight: normal;
-}
-
-.blog-description {
-	font-size: 20px;
-	color: #999;
-}
-
-/*
- * Main column and sidebar layout
- */
-.blog-main {
-	font-size: 18px;
-	line-height: 1.5;
-}
-
-/* Sidebar modules for boxing content */
-.sidebar-module {
-	padding: 15px;
-	margin: 0 -15px 15px;
-}
-
-.sidebar-module-inset {
-	padding: 15px;
-	background-color: #f5f5f5;
-	border-radius: 4px;
-}
-
-.sidebar-module-inset p:last-child,.sidebar-module-inset ul:last-child,.sidebar-module-inset ol:last-child
+.intro-header .site-heading,.intro-header .post-heading,.intro-header .page-heading
 	{
-	margin-bottom: 0;
+	padding: 100px 0 50px;
+	color: #fff
 }
 
-/* Pagination */
-.pager {
-	margin-bottom: 60px;
-	text-align: left;
+@media only screen and (min-width:768px) {
+	.intro-header .site-heading,.intro-header .post-heading,.intro-header .page-heading
+		{
+		padding: 150px 0
+	}
 }
 
-.pager>li>a {
-	width: 140px;
-	padding: 10px 20px;
+.intro-header .site-heading,.intro-header .page-heading {
+	text-align: center
+}
+
+.intro-header .site-heading h1,.intro-header .page-heading h1 {
+	margin-top: 0;
+	font-size: 50px
+}
+
+.intro-header .site-heading .subheading,.intro-header .page-heading .subheading
+	{
+	font-size: 24px;
+	line-height: 1.1, display:block;
+	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-weight: 300;
+	margin: 10px 0 0
+}
+
+@media only screen and (min-width:768px) {
+	.intro-header .site-heading h1,.intro-header .page-heading h1 {
+		font-size: 80px
+	}
+}
+
+.intro-header .post-heading h1 {
+	font-size: 35px
+}
+
+.intro-header .post-heading .subheading,.intro-header .post-heading .meta
+	{
+	line-height: 1.1;
+	display: block
+}
+
+.intro-header .post-heading .subheading {
+	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 24px;
+	margin: 10px 0 30px;
+	font-weight: 600
+}
+
+.intro-header .post-heading .meta {
+	font-family: Lora, 'Times New Roman', serif;
+	font-style: italic;
+	font-weight: 300;
+	font-size: 20px
+}
+
+.intro-header .post-heading .meta a {
+	color: #fff
+}
+
+@media only screen and (min-width:768px) {
+	.intro-header .post-heading h1 {
+		font-size: 55px
+	}
+	.intro-header .post-heading .subheading {
+		font-size: 30px
+	}
+}
+
+.post-preview>a {
+	color: #404040
+}
+
+.post-preview>a:hover,.post-preview>a:focus {
+	text-decoration: none;
+	color: #0085a1
+}
+
+.post-preview>a>.post-title {
+	font-size: 30px;
+	margin-top: 30px;
+	margin-bottom: 10px
+}
+
+.post-preview>a>.post-subtitle {
+	margin: 0;
+	font-weight: 300;
+	margin-bottom: 10px
+}
+
+.post-preview>.post-meta {
+	color: gray;
+	font-size: 18px;
+	font-style: italic;
+	margin-top: 0
+}
+
+.post-preview>.post-meta>a {
+	text-decoration: none;
+	color: #404040
+}
+
+.post-preview>.post-meta>a:hover,.post-preview>.post-meta>a:focus {
+	color: #0085a1;
+	text-decoration: underline
+}
+
+@media only screen and (min-width:768px) {
+	.post-preview>a>.post-title {
+		font-size: 36px
+	}
+}
+
+.section-heading {
+	font-size: 36px;
+	margin-top: 60px;
+	font-weight: 700
+}
+
+.caption {
 	text-align: center;
-	border-radius: 30px;
+	font-size: 14px;
+	padding: 10px;
+	font-style: italic;
+	margin: 0;
+	display: block;
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px
 }
 
-/*
- * Blog posts
- */
-.blog-post {
-	margin-bottom: 60px;
+footer {
+	padding: 50px 0 65px
 }
 
-.blog-post-title {
-	margin-bottom: 5px;
-	font-size: 25px;
-	font-family: Georgia,serif;
+footer .list-inline {
+	margin: 0;
+	padding: 0
 }
 
-.blog-post-meta {
-	margin-bottom: 15px;
-	color: #999;
-}
-.blog-post-perex {
-	font-size: 15px;
-}
-
-/*
- * Footer
- */
-.blog-footer {
-	padding: 40px 0;
-	color: #999;
+footer .copyright {
+	font-size: 14px;
 	text-align: center;
-	background-color: #f9f9f9;
-	border-top: 1px solid #e5e5e5;
+	margin-bottom: 0
 }
 
-.blog-footer p:last-child {
+.floating-label-form-group {
+	font-size: 14px;
+	position: relative;
 	margin-bottom: 0;
+	padding-bottom: .5em;
+	border-bottom: 1px solid #eee
+}
+
+.floating-label-form-group input,.floating-label-form-group textarea {
+	z-index: 1;
+	position: relative;
+	padding-right: 0;
+	padding-left: 0;
+	border: none;
+	border-radius: 0;
+	font-size: 1.5em;
+	background: 0 0;
+	box-shadow: none !important;
+	resize: none
+}
+
+.floating-label-form-group label {
+	display: block;
+	z-index: 0;
+	position: relative;
+	top: 2em;
+	margin: 0;
+	font-size: .85em;
+	line-height: 1.764705882em;
+	vertical-align: middle;
+	vertical-align: baseline;
+	opacity: 0;
+	-webkit-transition: top .3s ease, opacity .3s ease;
+	-moz-transition: top .3s ease, opacity .3s ease;
+	-ms-transition: top .3s ease, opacity .3s ease;
+	transition: top .3s ease, opacity .3s ease
+}
+
+.floating-label-form-group: :not (
+:first-child ){
+padding-left:14px;
+border-left:1px solid #eee
+}
+
+.floating-label-form-group-with-value label {
+	top: 0;
+	opacity: 1
+}
+
+.floating-label-form-group-with-focus label {
+	color: #0085a1
+}
+
+form .row:first-child .floating-label-form-group {
+	border-top: 1px solid #eee
+}
+
+body {
+	webkit-tap-highlight-color: #0085a1
 }
 </style>
 </head>
 <body>
-	<div class="blog-masthead">
+	<!-- Navigation -->
+	<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header page-scroll">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="index.html">Blog Michala Šípka</a>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse"
+				id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav navbar-right">
+					<tiles:insertAttribute name="menu" />
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container -->
+	</nav>
+
+	<!-- Page Header -->
+	<!-- Set your background image for this header on the line below. -->
+	<header class="intro-header"
+		style="background-image: url('http://ironsummitmedia.github.io/startbootstrap-clean-blog/img/home-bg.jpg')">
 		<div class="container">
-			<nav class="blog-nav">
-				<tiles:insertAttribute name="menu" />
-			</nav>
+			<div class="row">
+				<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+					<tiles:insertAttribute name="header" />
+				</div>
+			</div>
 		</div>
-	</div>
+	</header>
+
+	<!-- Main Content -->
 	<div class="container">
-		<div class="blog-header">
-			<tiles:insertAttribute name="header" />
-		</div>
 		<div class="row">
-			<div class="col-sm-8 blog-main">
+			<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 				<tiles:insertAttribute name="body" />
 			</div>
-			<!-- /.blog-main -->
-			<div class="col-sm-3 col-sm-offset-1 blog-sidebar">
-				<tiles:insertAttribute name="sidebar" />
-			</div>
-			<!-- /.blog-sidebar -->
 		</div>
-		<!-- /.row -->
 	</div>
-	<!-- /.container -->
-	<div class="blog-footer">
-		<tiles:insertAttribute name="footer" />
-	</div>
+	<hr>
+
+	<!-- Footer -->
+	<footer>
+		<div class="container">
+			<tiles:insertAttribute name="footer" />
+		</div>
+	</footer>
 </body>
 </html>
 

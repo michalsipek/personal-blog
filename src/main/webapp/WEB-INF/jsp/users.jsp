@@ -67,7 +67,8 @@
 			<div class="form-group">
 				<label for="password" class="col-sm-2 control-label">Role</label>
 				<div class="col-sm-10">
-					<form:select path="roles" items="${roles}"  itemLabel="name" itemValue="id" multiple="true" cssClass="form-control" />
+					<form:select path="roles" items="${roles}" itemLabel="name"
+						itemValue="id" multiple="true" cssClass="form-control" />
 					<form:errors path="roles" />
 				</div>
 			</div>
@@ -98,7 +99,12 @@
 						href='<spring:url value="/admin/users/${user.id}.html"></spring:url>'>
 							${user.name} </a></td>
 					<td>${user.email}</td>
-					<td><span class="green-txt">Aktivován</span></td>
+					<c:if test="${user.enable == 1}">
+						<td><span class="label label-success">Aktivován</span></td>
+					</c:if>
+					<c:if test="${user.enable == 0}">
+						<td><span class="label label-danger"> Deaktivován</span></td>
+					</c:if>
 					<td><a
 						href="<spring:url value="/admin/users/edit/${user.id}.html" />"
 						class="btn btn-xs btn-default pull-right"><span

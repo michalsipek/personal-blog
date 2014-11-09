@@ -43,6 +43,9 @@ public class User {
 	@Size(min=3, message="Heslo musí obsahovat nejménì 3 znaky!")
 	private String password;
 	
+	@Size(min=1, max=1)
+	private int enable;
+	
 	@NotEmpty
 	@ManyToMany
 	@JoinTable(name = "user_role", 
@@ -92,6 +95,12 @@ public class User {
 	}
 	public void setArticles(List<Article> articles) {
 		this.articles = articles;
+	}
+	public int getEnable() {
+		return enable;
+	}
+	public void setEnable(int enable) {
+		this.enable = enable;
 	}
 	
 }

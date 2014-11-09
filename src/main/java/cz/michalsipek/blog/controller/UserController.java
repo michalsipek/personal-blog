@@ -80,11 +80,11 @@ public class UserController {
 	}
 
 	/**
-	 * Method for removing user
+	 * Method for removing(disabling) user
 	 * */
 	@RequestMapping(value = "admin/users/remove/{id}", method = RequestMethod.GET)
 	public String removeUser(@PathVariable Integer id) {
-		userService.remove(userService.findById(id));
+		userService.disable(userService.findById(id));
 		return "redirect:/admin/users.html?remove=true";
 	}
 

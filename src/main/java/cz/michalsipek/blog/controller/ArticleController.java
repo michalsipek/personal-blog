@@ -95,8 +95,18 @@ public class ArticleController {
 		}
 		Date publishDate = new Date();
 		article.setPublishDate(publishDate);
+		article.setEnable(1);
 		articleService.save(article);
 		return "redirect:/admin/articles.html?success=true";
+	}
+	
+	/**
+	 * Method for removing(disabling) an article
+	 * */
+	@RequestMapping(value="admin/articles/remove/{id}", method = RequestMethod.GET)
+	public String removeArticle(@PathVariable Integer id){
+		articleService.disable(articleService.findById(id));
+		return "redirect:/admin/articles.html?remove=true";
 	}
 
 	/**

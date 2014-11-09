@@ -2,11 +2,8 @@ package cz.michalsipek.blog.dao.impl;
 
 import java.io.Serializable;
 import java.util.List;
-
-import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -26,12 +23,10 @@ public class ArticleDaoImpl implements ArticleDao {
 
 	@SuppressWarnings("unchecked")
 	public List<Article> findAllWithPagination(int page, int limitResultsPerPage) {
-		Criteria cr = sessionFactory.getCurrentSession()
-				.createCriteria(Article.class)
-				.addOrder(Order.desc("publishDate"));
-		cr.setFirstResult(page * limitResultsPerPage);
-		cr.setMaxResults(limitResultsPerPage);
-		List<Article> results = cr.list();
+		Query query = sessionFactory.getCurrentSession().createQuery("from Article where enable=1 order by publishDate desc");
+		query.setFirstResult(page * limitResultsPerPage);
+		query.setMaxResults(limitResultsPerPage);
+		List<Article> results = query.list();
 		return results;
 	}
 
@@ -43,9 +38,7 @@ public class ArticleDaoImpl implements ArticleDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Article> findAll() {
-		return sessionFactory.getCurrentSession()
-				.createCriteria(Article.class)
-				.addOrder(Order.desc("publishDate")).list();
+		return sessionFactory.getCurrentSession().createQuery("from Article where enable=1 order by publishDate desc").list();
 	}
 
 	@Override
@@ -54,6 +47,14 @@ public class ArticleDaoImpl implements ArticleDao {
 		return article;
 	}
 
+	@Override
+	public void disable(Article article) {
+		Query query = sessionFactory.getCurrentSession().createQuery(
+				"update Article set enable = 0 where id = :id");
+		query.setParameter("id", article.getId());
+		query.executeUpdate();
+	}
+	
 	@Override
 	public void remove(Article article) {
 		sessionFactory.getCurrentSession().delete(article);
@@ -76,8 +77,8 @@ public class ArticleDaoImpl implements ArticleDao {
 	public List<Article> findByDate(String date, int page,
 			int limitResultsPerPage) {
 		Query query = sessionFactory.getCurrentSession().createQuery(
-				"from Article where publishDate like '" + date
-						+ "%' order by publishDate ASC");
+				"from Article where publishDate like ':date%' order by publishDate ASC");
+		query.setParameter("date", date);
 		query.setFirstResult(page * limitResultsPerPage);
 		query.setMaxResults(limitResultsPerPage);
 		List<Article> articles = query.list();

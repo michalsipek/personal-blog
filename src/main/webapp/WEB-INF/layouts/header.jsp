@@ -3,9 +3,9 @@
 
 <%@ include file="../layouts/taglibs.jsp"%>
 
-<h1 class="blog-title">Blog Michala Šípka</h1>
-<p class="lead blog-description">
-	Osobní blog věnovaný vývoji aplikací v jazyce Java, moderním
-	technologiím, životním názorům,<br> sportu - především cyklistice
-	a vše kolem ní.
-</p>
+<div class="site-heading">
+	<h1></h1>
+	<hr class="small">
+	<span class="subheading">Osobní blog věnovaný vývoji aplikací v jazyce Java, moderním technologiím, počítačové technice,
+sportu - především cyklistice a vše kolem ní.</span>
+</div>

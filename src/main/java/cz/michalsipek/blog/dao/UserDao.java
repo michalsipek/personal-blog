@@ -9,5 +9,5 @@ import cz.michalsipek.blog.entity.User;
  */
 
 public interface UserDao extends GenericDao<User, Integer> { 
-
+	void disable(User user);
 }

@@ -44,13 +44,13 @@ public class IndexController {
 	 * */
 	@RequestMapping("/index")
 	public String index(Model model) {
-		return "redirect:/articles?page=0";
+		return "redirect:/blog?page=0";
 		}
 	
 	/**
 	 * Method for get Articles with pagination / index page
 	 * */
-	@RequestMapping(value = "/articles", method = RequestMethod.GET)
+	@RequestMapping(value = "/blog", method = RequestMethod.GET)
 	public String getArticles(@RequestParam(value = "page", required = false) int page, Model model){
 		model.addAttribute("categories", categoryService.findAll());
 		model.addAttribute("archives", archiveService.findAll());
@@ -68,6 +68,7 @@ public class IndexController {
 	public String getDetail(Model model, @PathVariable Integer id){
 		model.addAttribute("article", articleService.findById(id));
 		model.addAttribute("categories", categoryService.findAll());
+		model.addAttribute("archives", archiveService.findAll());
 		return "article-detail-public";
 	}
 	

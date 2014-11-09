@@ -11,15 +11,18 @@
 			<strong>Email:</strong> ${user.email}
 		</p>
 		<p>
-			<strong>Role:</strong> <c:forEach items="${user.roles}" var="roles">
+			<strong>Role:</strong>
+			<c:forEach items="${user.roles}" var="roles">
 				${roles.name}
 			</c:forEach>
 		</p>
-		<!-- Button trigger modal -->
-		<button class="btn btn-danger btn-xs" data-toggle="modal"
-			data-target="#removeModal">
-			<span class="glyphicon glyphicon-trash"></span> Odstranit účet
-		</button>
+		<c:if test="${user.enable == 1}">
+			<!-- Button trigger modal -->
+			<button class="btn btn-danger btn-xs" data-toggle="modal"
+				data-target="#removeModal">
+				<span class="glyphicon glyphicon-trash"></span> Odstranit účet
+			</button>
+		</c:if>
 	</div>
 	<div class="col-sm-8">
 		<div class="well well-lg">
@@ -54,7 +57,9 @@
 				<button type="button" class="close" data-dismiss="modal">
 					<span aria-hidden="true">&times;</span><span class="sr-only">Zavřít</span>
 				</button>
-				<h4 class="modal-title" id="myModalLabel"><strong>Odstranit uživatele</strong></h4>
+				<h4 class="modal-title" id="myModalLabel">
+					<strong>Odstranit uživatele</strong>
+				</h4>
 			</div>
 			<div class="modal-body">Opravdu chcete tohoto uživatele
 				odstranit?</div>

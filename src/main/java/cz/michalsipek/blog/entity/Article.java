@@ -43,6 +43,8 @@ public class Article {
 	
 	private Date publishDate;
 	
+	private int enable;
+	
 	@ManyToOne(cascade = CascadeType.REMOVE)
 	@JoinColumn(name = "user_id")
 	private User user;
@@ -99,5 +101,10 @@ public class Article {
 	public void setPerex(String perex) {
 		this.perex = perex;
 	}
-	
+	public int getEnable() {
+		return enable;
+	}
+	public void setEnable(int enable) {
+		this.enable = enable;
+	}
 }

@@ -16,10 +16,10 @@
 		<authentication-provider>
 		<password-encoder hash="bcrypt"/>
 			<jdbc-user-service data-source-ref="dataSource"
-				authorities-by-username-query="select user.name, role.name from user
-				 join user_role on user.id = user_role.user_id 
-				 join role on user_role.role_id = role.id where user.name=?"
-				users-by-username-query="select name, password,1 from user where name=?" />
+				authorities-by-username-query="select User.name, Role.name from User
+				 join user_role on User.id = user_role.user_id 
+				 join Role on user_role.role_id = Role.id where User.name=?"
+				users-by-username-query="select name, password, enable from User where name=? and enable=1" />
 		</authentication-provider>
 	</authentication-manager>
 </beans:beans>
