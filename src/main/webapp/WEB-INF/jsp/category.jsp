@@ -6,9 +6,7 @@
 <div class="row">
 	<div class="col-6 col-sm-6 col-lg-4">
 		<h1>Kategorie</h1>
-		<c:forEach items="${categories}" var="category">
 			<h4>${category.name}</h4>
-		</c:forEach>
 
 <form:form commandName="category" cssClass="form-horizontal">
 	<div class="form-group">

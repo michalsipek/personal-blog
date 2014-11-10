@@ -4,7 +4,6 @@ package cz.michalsipek.blog.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -64,8 +63,8 @@ public class IndexController {
 	/**
 	 * Method for get an article's detail
 	 * */
-	@RequestMapping("/articles/{id}")
-	public String getDetail(Model model, @PathVariable Integer id){
+	@RequestMapping("/articles")
+	public String getDetail(Model model, @RequestParam("id") Integer id){
 		model.addAttribute("article", articleService.findById(id));
 		model.addAttribute("categories", categoryService.findAll());
 		model.addAttribute("archives", archiveService.findAll());
@@ -75,8 +74,8 @@ public class IndexController {
 	/**
 	 * Method for display articles by category
 	 * */
-	@RequestMapping("/articles/cat{id}")
-	public String getArticlesByCategory(Model model, @PathVariable Integer id){
+	@RequestMapping("/articles/cat")
+	public String getArticlesByCategory(Model model, @RequestParam("id") Integer id){
 		model.addAttribute("categories", categoryService.findAll());
 		model.addAttribute("archives", archiveService.findAll());
 		model.addAttribute("category", categoryService.findById(id));		

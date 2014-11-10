@@ -13,9 +13,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import cz.michalsipek.blog.entity.Role;
 import cz.michalsipek.blog.entity.User;
 import cz.michalsipek.blog.service.ArticleService;
@@ -60,8 +61,8 @@ public class UserController {
 	/**
 	 * Method for display user's detail (user-detail.jsp)
 	 * */
-	@RequestMapping("/admin/users/{id}")
-	public String userDetail(Model model, @PathVariable Integer id) {
+	@RequestMapping("/admin/user")
+	public String userDetail(Model model, @RequestParam("id") Integer id) {
 		model.addAttribute("users", userService.findAll());
 		model.addAttribute("user", userService.findById(id));
 		return "user-detail";
@@ -70,11 +71,12 @@ public class UserController {
 	/**
 	 * Method for saving user
 	 * */
-	@RequestMapping(value = "admin/users", method = RequestMethod.POST)
-	public String saveUser(Model model,@Valid @ModelAttribute("user") User user, BindingResult result) {
+	@RequestMapping(value = "admin/user", method = RequestMethod.POST)
+	public String saveUser(Model model,@Valid @ModelAttribute("user") User user, @RequestParam("id") Integer id, BindingResult result) {
 		if (result.hasErrors()) {
 			return users(model);
 		}
+		user.setEnable(1);
 		userService.save(user);
 		return "redirect:/admin/users.html?success=true";
 	}
@@ -82,8 +84,8 @@ public class UserController {
 	/**
 	 * Method for removing(disabling) user
 	 * */
-	@RequestMapping(value = "admin/users/remove/{id}", method = RequestMethod.GET)
-	public String removeUser(@PathVariable Integer id) {
+	@RequestMapping(value = "admin/user/remove", method = RequestMethod.GET)
+	public String removeUser(@RequestParam("id") Integer id) {
 		userService.disable(userService.findById(id));
 		return "redirect:/admin/users.html?remove=true";
 	}
@@ -91,8 +93,8 @@ public class UserController {
 	/**
 	 * Method for display edit-user.jsp page
 	 * */
-	@RequestMapping("/admin/users/edit/{id}")
-	public String editUser(Model model, @PathVariable Integer id) {
+	@RequestMapping("/admin/user/edit")
+	public String editUser(Model model, @RequestParam("id") Integer id) {
 		model.addAttribute("user", userService.findById(id));
 		model.addAttribute("roles", roleService.findAll());
 		return "edit-user";
@@ -101,8 +103,8 @@ public class UserController {
 	/**
 	 * Method for saving the modified user
 	 * */
-	@RequestMapping(value = "admin/users/edit/{id}", method = RequestMethod.POST)
-	public String doEditUser(Model model, @Valid @ModelAttribute("edit-user") User user, BindingResult result) {
+	@RequestMapping(value = "admin/user/edit", method = RequestMethod.POST)
+	public String doEditUser(Model model, @Valid @ModelAttribute("edit-user") User user, @RequestParam("id") Integer id, BindingResult result) {
 		if (result.hasErrors()) {
 			return users(model);
 		}

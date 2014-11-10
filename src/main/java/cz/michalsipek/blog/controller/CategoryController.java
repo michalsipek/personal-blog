@@ -7,9 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import cz.michalsipek.blog.entity.Category;
 import cz.michalsipek.blog.service.CategoryService;
@@ -46,8 +46,8 @@ public class CategoryController {
 	/**
 	 * Method for display category's detail (category-detail.jsp)
 	 * */
-	@RequestMapping("/admin/categories/{id}")
-	public String userDetail(Model model, @PathVariable Integer id) {
+	@RequestMapping("/admin/category")
+	public String categoryDetail(Model model, @RequestParam("id") Integer id) {
 		model.addAttribute("categories", categoryService.findAll());
 		model.addAttribute("category", categoryService.findById(id));
 		return "category-detail";
@@ -68,8 +68,8 @@ public class CategoryController {
 	/**
 	 * Method for removing category
 	 * */
-	@RequestMapping(value="admin/categories/remove/{id}", method = RequestMethod.GET)
-	public String removeCategory(@PathVariable Integer id){
+	@RequestMapping(value="admin/categories/remove", method = RequestMethod.GET)
+	public String removeCategory(@RequestParam("id") Integer id){
 		categoryService.remove(categoryService.findById(id));
 		return "redirect:/admin/categories.html?remove=true";
 	}
@@ -77,8 +77,8 @@ public class CategoryController {
 	/**
 	 * Method for display edit-category.jsp page
 	 * */
-	@RequestMapping("/admin/categories/edit/{id}")
-	public String editCategory(Model model, @PathVariable Integer id){
+	@RequestMapping("/admin/category/edit")
+	public String editCategory(Model model, @RequestParam("id") Integer id){
 		model.addAttribute("edit-category", categoryService.findById(id));
 		return "edit-category";
 	}
@@ -86,8 +86,8 @@ public class CategoryController {
 	/**
 	 * Method for saving the modified category
 	 * */
-	@RequestMapping(value="admin/categories/edit/{id}", method = RequestMethod.POST)
-	public String doEditCategory(@Valid @ModelAttribute("edit-category") Category category, BindingResult result){
+	@RequestMapping(value="admin/category/edit", method = RequestMethod.POST)
+	public String doEditCategory(@Valid @ModelAttribute("edit-category") Category category, @RequestParam("id") Integer id, BindingResult result){
 		if (result.hasErrors()) {
 			return "edit-category";
 		}

@@ -17,7 +17,7 @@
 						<div class="panel-body">
 							<p>${article.title}</p>
 							<a
-								href="<spring:url value="/admin/articles/${article.id}.html" />"><img
+								href="<spring:url value="/admin/article?id=${article.id}" />"><img
 								src="https://tce-live.s3.amazonaws.com/static/assets/images/article_icon_219.png"
 								class="img-responsive" alt="" /></a>
 						</div>

@@ -20,7 +20,7 @@
 			<!-- Button trigger modal -->
 			<button class="btn btn-danger btn-xs" data-toggle="modal"
 				data-target="#removeModal">
-				<span class="glyphicon glyphicon-trash"></span> Odstranit účet
+				<span class="glyphicon glyphicon-trash"></span> Deaktivovat účet
 			</button>
 		</c:if>
 	</div>
@@ -58,15 +58,15 @@
 					<span aria-hidden="true">&times;</span><span class="sr-only">Zavřít</span>
 				</button>
 				<h4 class="modal-title" id="myModalLabel">
-					<strong>Odstranit uživatele</strong>
+					<strong>Deaktivovat uživatele</strong>
 				</h4>
 			</div>
 			<div class="modal-body">Opravdu chcete tohoto uživatele
-				odstranit?</div>
+				deaktivovat?</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Storno</button>
-				<a href="<spring:url value="/admin/users/remove/${id}.html" />"
-					class="btn btn-danger">Odstranit uživatele</a>
+				<a href="<spring:url value="/admin/users/remove?id=${user.id}" />"
+					class="btn btn-danger">Deaktivovat uživatele</a>
 			</div>
 		</div>
 	</div>

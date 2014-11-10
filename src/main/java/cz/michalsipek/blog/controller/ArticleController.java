@@ -16,9 +16,9 @@ import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import cz.michalsipek.blog.entity.Article;
 import cz.michalsipek.blog.entity.Category;
@@ -66,8 +66,8 @@ public class ArticleController {
 	/**
 	 * Method for display article's detail (article-detail.jsp)
 	 * */
-	@RequestMapping("/admin/articles/{id}")
-	public String userDetail(Model model, @PathVariable Integer id) {
+	@RequestMapping("/admin/article")
+	public String articleDetail(Model model, @RequestParam("id") Integer id) {
 		model.addAttribute("articles", articleService.findAll());
 		model.addAttribute("article", articleService.findById(id));
 		model.addAttribute("categories", categoryService.findAll());
@@ -103,8 +103,8 @@ public class ArticleController {
 	/**
 	 * Method for removing(disabling) an article
 	 * */
-	@RequestMapping(value="admin/articles/remove/{id}", method = RequestMethod.GET)
-	public String removeArticle(@PathVariable Integer id){
+	@RequestMapping(value="admin/articles/remove", method = RequestMethod.GET)
+	public String removeArticle(@RequestParam("id") Integer id){
 		articleService.disable(articleService.findById(id));
 		return "redirect:/admin/articles.html?remove=true";
 	}

@@ -96,7 +96,7 @@
 			<c:forEach items="${users}" var="user">
 				<tr>
 					<td><a
-						href='<spring:url value="/admin/users/${user.id}.html"></spring:url>'>
+						href='<spring:url value="/admin/user?id=${user.id}"></spring:url>'>
 							${user.name} </a></td>
 					<td>${user.email}</td>
 					<c:if test="${user.enable == 1}">
@@ -106,7 +106,7 @@
 						<td><span class="label label-danger"> Deaktivován</span></td>
 					</c:if>
 					<td><a
-						href="<spring:url value="/admin/users/edit/${user.id}.html" />"
+						href="<spring:url value="/admin/user/edit?id=${user.id}" />"
 						class="btn btn-xs btn-default pull-right"><span
 							class="glyphicon glyphicon-pencil"></span> Upravit </a></td>
 				</tr>

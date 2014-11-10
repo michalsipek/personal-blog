@@ -43,7 +43,6 @@ public class User {
 	@Size(min=3, message="Heslo musí obsahovat nejménì 3 znaky!")
 	private String password;
 	
-	@Size(min=1, max=1)
 	private int enable;
 	
 	@NotEmpty

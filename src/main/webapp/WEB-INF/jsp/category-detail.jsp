@@ -30,7 +30,7 @@
 			<div class="modal-body">Opravdu chcete tuto rubriku odstranit?</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Storno</button>
-				<a href="<spring:url value="/admin/categories/remove/${id}.html" />"
+				<a href="<spring:url value="/admin/categories/remove?id=${category.id}" />"
 					class="btn btn-danger">Odstranit rubriku</a>
 			</div>
 		</div>

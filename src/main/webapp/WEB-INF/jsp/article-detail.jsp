@@ -36,7 +36,7 @@
 	<input type="submit" formaction="" value="Uložit"
 		class="btn btn-success btn-lg btn-block">
 	<button type="button"
-		onclick="location.href='<spring:url value="/admin/articles/remove/${article.id}"></spring:url>'"
+		onclick="location.href='<spring:url value="/admin/articles/remove?id=${article.id}"></spring:url>'"
 		class="btn btn-default btn-lg btn-block">Odstranit</button>
 </div>
 

@@ -56,10 +56,10 @@
 			<c:forEach items="${categories}" var="category">
 				<tr>
 					<td><a
-						href='<spring:url value="/admin/categories/${category.id}.html"></spring:url>'>
+						href='<spring:url value="/admin/category?id=${category.id}"></spring:url>'>
 							${category.name} <span class="badge">42</span> </a></td>
 					<td><a
-						href="<spring:url value="/admin/categories/edit/${category.id}.html" />"
+						href="<spring:url value="/admin/category/edit?id=${category.id}" />"
 						class="btn btn-xs btn-default pull-right"><span
 							class="glyphicon glyphicon-pencil"></span> Upravit</a></td>
 				</tr>

@@ -7,7 +7,7 @@
 		<div class="post-preview">
 			<h2 class="post-title">
 				<a
-					href='<spring:url value="/articles/${article.id}.html"></spring:url>'>${article.title}</a>
+					href='<spring:url value="/articles?id=${article.id}"></spring:url>'>${article.title}</a>
 			</h2>
 			<p class="post-meta">
 				Zveřejnil <a href="#">${article.user.name}</a> dne
@@ -17,7 +17,7 @@
 			<h3 class="post-subtitle">${article.perex}</h3>
 			<p class="post-meta">
 				<a
-					href='<spring:url value="/articles/${article.id}.html"></spring:url>'>Zobrazit
+					href='<spring:url value="/articles?id=${article.id}"></spring:url>'>Zobrazit
 					celý článek</a>
 			</p>
 			<hr>
